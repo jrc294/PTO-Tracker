@@ -6,8 +6,8 @@ const Person = (props) => {
     return (
         <Card className="person">
             <p><b>Name : {props.person.name}</b></p>
-            <Day className="day" day={props.person.days[0].day}/>
-            <Day day={props.person.days[1].day}/>
+            <Day day={props.person.days[0] ? props.person.days[0].day : 0}/>
+            <Day day={props.person.days[1] ? props.person.days[1].day : 0}/>
             <Day day={props.person.days[2] ? props.person.days[2].day : 0}/>
         </Card>
     )
