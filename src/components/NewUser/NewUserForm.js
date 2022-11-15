@@ -30,12 +30,12 @@ const NewUserForm = (props) => {
 
     return (
         <Card>
-            <form onSubmit={onSubmitHandler}>
+            <form className="new-user-form" onSubmit={onSubmitHandler}>
                 <div>
-                    <label>Name: </label>
-                    <input className="new-user-name" value={userName} type="text" onChange={userNameChangeHandler}/>
-                    <label>Team: </label>
-                    <select value={userTeam} onChange={userTeamChangeHandler}>
+                    <label for="name">Name: </label>
+                    <input value={userName} className="form-element" id="name" type="text" onChange={userNameChangeHandler}/>
+                    <label for="team">Team: </label>
+                    <select id="team" className="form-element" value={userTeam} onChange={userTeamChangeHandler}>
                         <option>Team 404</option>
                         <option>Kettle</option>
                         <option>Rogue</option>

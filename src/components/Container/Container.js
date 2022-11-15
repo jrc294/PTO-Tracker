@@ -16,15 +16,23 @@ const Container = (props) => {
         setFilterTeam(team);
     }
 
+    const setSelected = (userKey, day, isSelected) => {
+        props.onSetSelected(userKey, day, isSelected);
+    }
+
     const filteredUsers = props.data.filter((item) => item.team === filterTeam);
 
     return (
         <div>
             <Card className="container">
                 <div className="align-right">
-                    <Filter onChangeYear={saveChangeYearHandler} onChangeTeam={saveChangeTeamHandler} filterYear={props.filterYear}/>
+                    <Filter onChangeYear={saveChangeYearHandler}
+                            onChangeTeam={saveChangeTeamHandler}
+                            filterYear={props.filterYear}
+                            filterMonth={props.filterMonth}
+                            onChangeMonth={props.onChangeMonth}/>
                 </div>
-                <PersonList users={filteredUsers}/>
+                <PersonList users={filteredUsers} filterYear={props.filterYear} filterMonth={props.filterMonth} onSetSelected={setSelected}/>
             </Card>
         </div>
     );

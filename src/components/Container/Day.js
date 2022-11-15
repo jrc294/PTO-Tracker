@@ -1,16 +1,29 @@
 import './Day.css';
-import { useState} from "react";
 
 const Day = (props) => {
 
-    const [dayItemColor, setDayItemColor] = useState("day-item-white");
+    const dayAbbrev = ['Su','Mo','Tu','We','Th','Fr','Sa'];
+
+    let classNames = "available";
+    let isWeekend = false;
+
+    if (props.dayOfWeek === 0 || props.dayOfWeek === 6) {
+        classNames = "available weekend";
+        isWeekend = true;
+    }
+
+    if (props.isSelected) {
+        classNames = "available day-selected";
+    }
 
     const clickHandler = () => {
-        dayItemColor === "day-item-white" ? setDayItemColor("day-item-yellow") : setDayItemColor("day-item-white");
+        if (!isWeekend) {
+            props.onSetSelected(props.day, !props.isSelected);
+        }
     }
 
     return (
-        <button onClick={clickHandler} className={dayItemColor}>{props.day}</button>
+        <button onClick={clickHandler} className={classNames}>{dayAbbrev[props.dayOfWeek]} {props.day}</button>
     )
 }
 

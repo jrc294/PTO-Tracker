@@ -1,7 +1,7 @@
-.new-user-name {
-    display: inline;
-    margin-right: 8px;
-}
+/*.new-user-name {*/
+/*    display: inline;*/
+/*    margin-right: 8px;*/
+/*}*/
 
 .add-user-button {
     text-align: right;
@@ -10,4 +10,16 @@
 button {
     margin-right: 10px;
 }
+
+.new-user-form {
+    padding: 24px 0 0 24px;
+}
+
+.form-element {
+    display: block;
+}
+
+/*input, select {*/
+/*    display: block;*/
+/*}*/
 
