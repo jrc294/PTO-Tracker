@@ -1,4 +1,4 @@
-import './Filter.css';
+import styles from './Filter.module.css';
 
 const Filter = (props) => {
 
@@ -22,19 +22,19 @@ const Filter = (props) => {
 
     return (
         <div className="more-margin-bottom">
-            <div className="filter-div">
+            <div className={styles['filter-div']}>
                 <select onChange={saveChangeTeamHandler}>
                     <option>Team 404</option>
                     <option>Kettle</option>
                     <option>Rogue</option>
                 </select>
             </div>
-            <div className="filter-div header">
+            <div className={`${styles['filter-div']} text-align-center`}>
                     <button onClick={saveDecreaseMonthHandler}>&lt;</button>
-                    <h2 className="filter-div-center">{months[props.filterMonth]}</h2>
+                    <h2 className={`${styles["filter-month-label"]} header`}>{months[props.filterMonth]}</h2>
                     <button onClick={saveIncreaseMonthHandler}>&gt;</button>
             </div>
-            <div className="filter-div text-right">
+            <div className={`${styles['filter-div']} text-align-right`}>
                 <select value={props.filterYear} onChange={saveChangeYearHandler}>
                     <option value='2020'>2020</option>
                     <option value='2021'>2021</option>

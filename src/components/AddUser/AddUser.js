@@ -1,6 +1,4 @@
 import Card from "../../UI/Card";
-import "./AddUser.css";
-
 
 const AddUser = (props) => {
 
@@ -9,8 +7,8 @@ const AddUser = (props) => {
     };
 
     return (
-        <Card className="card-add-new-user-button">
-            <div className="add-new-button">
+        <Card>
+            <div className="text-align-center">
                 <button onClick={onClickHandler}>Add new team member</button>
             </div>
         </Card>

@@ -14,3 +14,28 @@ body {
   padding: 16px;
 }
 
+.text-align-right {
+  text-align: right;
+}
+
+.more-margin-bottom {
+  margin-bottom: 12px;
+}
+
+.text-align-center {
+  text-align: center;
+}
+
+button {
+  height: 32px;
+  border-radius: 10px;
+  border: 1px solid gray;
+}
+
+select {
+  height: 30px;
+  width: 100px;
+  margin: 0 8px 8px 0;
+  min-width: 64px;
+}
+

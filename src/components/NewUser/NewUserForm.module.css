@@ -1,0 +1,20 @@
+.new-user-form {
+    padding: 24px 0 0 24px;
+}
+
+.form-element {
+    display: block;
+}
+
+.invalid-label {
+    color: red;
+}
+
+.invalid {
+    background-color: pink;
+}
+
+button {
+    margin-right: 10px;
+}
+

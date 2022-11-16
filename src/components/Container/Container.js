@@ -1,8 +1,8 @@
-import Person from "./Person";
 import Card from "../../UI/Card";
 import Filter from "./Filter";
 import {useState} from "react";
 import PersonList from "./PersonList";
+import styles from "./Container.module.css";
 
 const Container = (props) => {
 
@@ -24,7 +24,7 @@ const Container = (props) => {
 
     return (
         <div>
-            <Card className="container">
+            <Card className={styles.container}>
                 <div className="align-right">
                     <Filter onChangeYear={saveChangeYearHandler}
                             onChangeTeam={saveChangeTeamHandler}

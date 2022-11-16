@@ -1,14 +1,4 @@
-.day-item-yellow {
-    margin-right: 5px;
-    display: inline-block;
-    background-color: yellow;
-    border: 1px solid black;
-    width: 36px;
-    height: 36px;
-    text-align: center;
-}
-
-.available {
+.day {
     margin-right: 5px;
     display: inline-block;
     background-color: white;
@@ -19,7 +9,7 @@
     text-align: center;
 }
 
-.weekend {
+.day-unavailable {
     background-color: lightgray;
 }
 

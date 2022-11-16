@@ -1,4 +1,3 @@
-import './NewUser.css';
 import NewUserForm from "./NewUserForm";
 
 const NewUser = (props) => {
@@ -7,7 +6,7 @@ const NewUser = (props) => {
         console.log(userData);
         const newUserData = {
             ...userData,
-            id: Math.random().toString()
+            id: parseInt(Math.random() * 1000)
         }
         props.onAddUser(newUserData);
     };

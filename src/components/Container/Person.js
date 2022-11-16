@@ -21,7 +21,7 @@ const Person = (props) => {
     }
 
     return (
-        <Card className="person">
+        <Card>
             <p><b>Name : {props.person.name}</b></p>
             {renderDays()}
         </Card>

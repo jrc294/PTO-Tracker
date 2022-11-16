@@ -1,19 +1,13 @@
-import './Day.css';
+import styles from './Day.module.css';
 
 const Day = (props) => {
 
     const dayAbbrev = ['Su','Mo','Tu','We','Th','Fr','Sa'];
 
-    let classNames = "available";
     let isWeekend = false;
 
     if (props.dayOfWeek === 0 || props.dayOfWeek === 6) {
-        classNames = "available weekend";
         isWeekend = true;
-    }
-
-    if (props.isSelected) {
-        classNames = "available day-selected";
     }
 
     const clickHandler = () => {
@@ -23,7 +17,7 @@ const Day = (props) => {
     }
 
     return (
-        <button onClick={clickHandler} className={classNames}>{dayAbbrev[props.dayOfWeek]} {props.day}</button>
+        <button onClick={clickHandler} className={`${styles.day} ${props.isSelected ? styles["day-selected"] : ''} ${isWeekend ? styles["day-unavailable"] : ''}`}>{dayAbbrev[props.dayOfWeek]} {props.day}</button>
     )
 }
 

@@ -1,12 +1,12 @@
 import Person from "./Person";
 
-import "./PersonList.css";
+import styles from "./PersonList.module.css";
 
 const PersonList = (props) => {
 
     if (props.users.length === 0) {
         return (
-            <h2 className="align-center">No Team Members Found</h2>
+            <h2 className={styles["align-center-white"]}>No Team Members Found</h2>
         )
     }
 

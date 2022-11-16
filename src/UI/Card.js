@@ -1,13 +1,9 @@
-import './Card.css';
-import '../components/Container/Person.css';
-import '../components/Container/Container.css';
+import styles from './Card.module.css';
 
 const Card = (props) => {
 
-    const classes = "card " + props.className;
-
     return (
-        <div className={classes}>{props.children}</div>
+        <div className={`${styles['card']} ${props.className}`}>{props.children}</div>
     )
 }
 

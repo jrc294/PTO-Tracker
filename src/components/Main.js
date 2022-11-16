@@ -55,17 +55,18 @@ const Main = () => {
     }
 
     const setSelected = (userId, day, isSelected) => {
-        let userToUpdate = data.filter((user) => user.id === userId);
+        let userToUpdate = data.find((user) => user.id === userId);
         let updatedDays = undefined;
         if (isSelected) {
-            updatedDays = [day, ...userToUpdate[0].days];
-            userToUpdate[0].days = updatedDays;
+            updatedDays = [day, ...userToUpdate.days];
+            userToUpdate.days = updatedDays;
         } else {
-            updatedDays = userToUpdate[0].days.filter((existingDay) => existingDay !== day);
-            userToUpdate[0].days = updatedDays;
+            updatedDays = userToUpdate.days.filter((existingDay) => existingDay !== day);
+            userToUpdate.days = updatedDays;
         }
+        console.log(userToUpdate);
         setData((previousState) => {
-            return [userToUpdate[0], ...previousState.filter((user) => user.id !== userToUpdate[0].id)];
+            return [...previousState];
         });
         console.log(data);
     };
