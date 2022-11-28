@@ -1,10 +1,10 @@
 import "./Main.css";
 import Container from "./Container/Container";
 import NewUser from "./NewUser/NewUser";
-import {useState} from "react";
+import {useState, useEffect} from "react";
 import AddUser from "./AddUser/AddUser";
 
-const DUMMY_DATA = [{id: 121, name: 'Jonathan', team: 'Team 404', days: [21,22]},{id: 122, name: 'Angela', team: 'Kettle', days: [6,7,8]}];
+const DUMMY_DATA = [{id: 121, name: 'Jonathan', team: 1, days: [21,22]},{id: 122, name: 'Angela', team: 2, days: [6,7,8]}];
 
 const Main = () => {
 
@@ -12,6 +12,12 @@ const Main = () => {
     const [data, setData] = useState(DUMMY_DATA);
     const [isUserBeingAdded, setIsUserBeingAdded] = useState(false);
     const [filterMonth, setFilterMonth] = useState(new Date().getMonth());
+    const [filterTeam, setFilterTeam] = useState();
+
+    useEffect(() => {
+        console.log('use-effect');
+        setFilterTeam(localStorage.getItem('filter-group') ? +localStorage.getItem('filter-group') : 1);
+    },[]);
 
     const saveAddUserHandler = (userData) => {
         const newUser = {id: userData.id, name: userData.name, team: userData.team, days: []};
@@ -71,16 +77,24 @@ const Main = () => {
         console.log(data);
     };
 
+    const saveChangeTeamHandler = (team) => {
+        setFilterTeam(team);
+        console.log(typeof team);
+        localStorage.setItem('filter-group', team.toString());
+    }
+
     return (
-        <div>
+        <>
             <h2 className="header">PTO Tracker</h2>
             <Container data={data}
                        onChangeYear={saveChangeYearHandler}
+                       onSaveChangeTeam={saveChangeTeamHandler}
                        filterYear={filterYear}
                        filterMonth={filterMonth}
+                       filterTeam={filterTeam}
                        onChangeMonth={saveChangeMonthHandler} onSetSelected={setSelected}/>
             {isUserBeingAdded ? <NewUser onAddUser={saveAddUserHandler} onCancel={cancelUserHandler}/> : <AddUser onShowAddUserForm={saveShowAddUserForm}/>}
-        </div>
+        </>
     )
 }
 

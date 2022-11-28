@@ -1,26 +1,24 @@
 import Card from "../../UI/Card";
 import Filter from "./Filter";
-import {useState} from "react";
 import PersonList from "./PersonList";
 import styles from "./Container.module.css";
 
 const Container = (props) => {
 
-    const [filterTeam, setFilterTeam] = useState("Team 404");
-
+    console.log(props.filterTeam);
     const saveChangeYearHandler = (year) => {
         props.onChangeYear(year);
     }
 
     const saveChangeTeamHandler = (team) => {
-        setFilterTeam(team);
+        props.onSaveChangeTeam(team);
     }
 
     const setSelected = (userKey, day, isSelected) => {
         props.onSetSelected(userKey, day, isSelected);
     }
 
-    const filteredUsers = props.data.filter((item) => item.team === filterTeam);
+    const filteredUsers = props.data.filter((item) => item.team === props.filterTeam);
 
     return (
         <div>
@@ -30,6 +28,7 @@ const Container = (props) => {
                             onChangeTeam={saveChangeTeamHandler}
                             filterYear={props.filterYear}
                             filterMonth={props.filterMonth}
+                            filterTeam={props.filterTeam}
                             onChangeMonth={props.onChangeMonth}/>
                 </div>
                 <PersonList users={filteredUsers} filterYear={props.filterYear} filterMonth={props.filterMonth} onSetSelected={setSelected}/>

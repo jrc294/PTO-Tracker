@@ -9,7 +9,7 @@ const Filter = (props) => {
     };
 
     const saveChangeTeamHandler = (event) => {
-        props.onChangeTeam(event.target.value);
+        props.onChangeTeam(+event.target.value);
     }
 
     const saveIncreaseMonthHandler = () => {
@@ -23,10 +23,10 @@ const Filter = (props) => {
     return (
         <div className="more-margin-bottom">
             <div className={styles['filter-div']}>
-                <select onChange={saveChangeTeamHandler}>
-                    <option>Team 404</option>
-                    <option>Kettle</option>
-                    <option>Rogue</option>
+                <select value={props.filterTeam} onChange={saveChangeTeamHandler}>
+                    <option value='1'>Team 404</option>
+                    <option value='2'>Kettle</option>
+                    <option value='3'>Rogue</option>
                 </select>
             </div>
             <div className={`${styles['filter-div']} text-align-center`}>
