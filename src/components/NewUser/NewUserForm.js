@@ -2,6 +2,7 @@ import styles from './NewUserForm.module.css';
 import Card from '../../UI/Card';
 import { useState, useRef } from "react";
 import ErrorModal from "../Container/ErrorModal";
+import classes from "../Login/Login.module.css";
 
 const NewUserForm = (props) => {
 
@@ -23,7 +24,8 @@ const NewUserForm = (props) => {
             return;
         }
 
-        const userData = {name : nameInputRef.current.value, team : teamSelectRef.current.value};
+        const userData = {name : nameInputRef.current.value, team : +teamSelectRef.current.value};
+        console.log(teamSelectRef.current);
         nameInputRef.current.value='';
         props.onAddUser(userData);
     }
@@ -40,20 +42,23 @@ const NewUserForm = (props) => {
     return (
         <>
             {invalidInput && <ErrorModal message={errorMessage.message} title={errorMessage.title} onErrorModalCancel={errorHandler}/>}
-            <Card>
+            <Card className={styles.card}>
+                <div className={styles.header}>Add User</div>
                 <form className="new-user-form" onSubmit={onSubmitHandler}>
                     <div>
-                        <label className={`${invalidInput ? styles['invalid-label'] : ''}`}>Name: </label>
+                        <label htmlFor="name" className={`${invalidInput ? styles['invalid-label'] : ''}`}>Name</label>
                         <input className={`${styles['form-element']} ${invalidInput && styles.invalid}`}
                                id="name"
                                type="text"
                                ref={nameInputRef}
                                onChange={userNameChangeHandler}/>
-                        <label>Team: </label>
+                    </div>
+                    <div>
+                        <label htmlFor="team">Team</label>
                         <select id="team" className={styles['form-element']} ref={teamSelectRef}>
-                            <option>Team 404</option>npm
-                            <option>Kettle</option>
-                            <option>Rogue</option>
+                            <option value="1">Team 404</option>npm
+                            <option value="2">Kettle</option>
+                            <option value="3">Rogue</option>
                         </select>
                     </div>
                     <div className="text-align-right">

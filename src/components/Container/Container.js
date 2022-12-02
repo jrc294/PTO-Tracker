@@ -6,6 +6,7 @@ import styles from "./Container.module.css";
 const Container = (props) => {
 
     console.log(props.filterTeam);
+    console.log(props.data);
     const saveChangeYearHandler = (year) => {
         props.onChangeYear(year);
     }

@@ -21,7 +21,7 @@ const Filter = (props) => {
     }
 
     return (
-        <div className="more-margin-bottom">
+        <div className={`more-margin-bottom ${styles.filter}`}>
             <div className={styles['filter-div']}>
                 <select value={props.filterTeam} onChange={saveChangeTeamHandler}>
                     <option value='1'>Team 404</option>

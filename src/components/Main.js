@@ -1,12 +1,12 @@
-import "./Main.css";
 import Container from "./Container/Container";
 import NewUser from "./NewUser/NewUser";
 import {useState, useEffect} from "react";
 import AddUser from "./AddUser/AddUser";
+import styles from "./Main.module.css";
 
 const DUMMY_DATA = [{id: 121, name: 'Jonathan', team: 1, days: [21,22]},{id: 122, name: 'Angela', team: 2, days: [6,7,8]}];
 
-const Main = () => {
+const Main = (props) => {
 
     const [filterYear, setFilterYear] = useState('2022');
     const [data, setData] = useState(DUMMY_DATA);
@@ -21,9 +21,11 @@ const Main = () => {
 
     const saveAddUserHandler = (userData) => {
         const newUser = {id: userData.id, name: userData.name, team: userData.team, days: []};
+        console.log(newUser);
         setData((previousState) => {
             return [newUser, ...previousState];
         });
+        console.log(data);
         setIsUserBeingAdded(false);
     };
 
@@ -83,9 +85,19 @@ const Main = () => {
         localStorage.setItem('filter-group', team.toString());
     }
 
+    const logoutButtonHandler = () => {
+        props.onLogout();
+    }
+
     return (
         <>
-            <h2 className="header">PTO Tracker</h2>
+            <div className={styles['header-div']}></div>
+            <div className={styles['header-div']}>
+                <h2 className={styles.header}>Team Rota</h2>
+            </div>
+            <div className={styles['header-div']}>
+                <button className={styles.pullright} onClick={logoutButtonHandler}>Logout</button>
+            </div>
             <Container data={data}
                        onChangeYear={saveChangeYearHandler}
                        onSaveChangeTeam={saveChangeTeamHandler}

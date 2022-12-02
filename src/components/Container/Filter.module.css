@@ -3,10 +3,17 @@
     width: 33%;
 }
 
+.filter {
+    background-color: #6db1eb;
+    padding: 0 16px 16px 16px;
+    border-radius: 16px 16px 0px 0px;
+}
+
 .filter-month-label {
     display: inline-block;
     margin-right: 10px;
     width: 140px;
+    color: white;
 }
 
 

@@ -1,5 +1,6 @@
 import Day from "./Day";
 import Card from "../../UI/Card";
+import classes from "./Person.module.css";
 
 const Person = (props) => {
 
@@ -21,7 +22,7 @@ const Person = (props) => {
     }
 
     return (
-        <Card>
+        <Card className={classes.person}>
             <p><b>Name : {props.person.name}</b></p>
             {renderDays()}
         </Card>

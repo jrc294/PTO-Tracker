@@ -1,0 +1,14 @@
+.header {
+    width: 150px;
+    margin: 0 auto;
+    color: #212121;
+}
+
+.pullright {
+    float: right;
+}
+
+.header-div {
+    display: inline-block;
+    width: 33.3%;
+}
