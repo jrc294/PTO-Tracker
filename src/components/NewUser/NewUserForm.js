@@ -2,7 +2,6 @@ import styles from './NewUserForm.module.css';
 import Card from '../../UI/Card';
 import { useState, useRef } from "react";
 import ErrorModal from "../Container/ErrorModal";
-import classes from "../Login/Login.module.css";
 
 const NewUserForm = (props) => {
 

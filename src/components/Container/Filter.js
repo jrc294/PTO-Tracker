@@ -1,41 +1,46 @@
 import styles from './Filter.module.css';
+import {useContext} from "react";
+import AppContext from "../../store/context";
 
-const Filter = (props) => {
+const Filter = () => {
+
+    const ctx = useContext(AppContext);
+    console.log(ctx.filterYear);
+    console.log(ctx.filterTeam);
 
     const months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
 
     const saveChangeYearHandler = (event) => {
-        props.onChangeYear(event.target.value);
+        ctx.onChangeYear(event.target.value);
     };
 
     const saveChangeTeamHandler = (event) => {
-        props.onChangeTeam(+event.target.value);
+        ctx.onChangeTeam(event.target.value);
     }
 
     const saveIncreaseMonthHandler = () => {
-        props.onChangeMonth(true);
+        ctx.onChangeMonth(true);
     }
 
     const saveDecreaseMonthHandler = () => {
-        props.onChangeMonth(false);
+        ctx.onChangeMonth(false);
     }
 
     return (
         <div className={`more-margin-bottom ${styles.filter}`}>
             <div className={styles['filter-div']}>
-                <select value={props.filterTeam} onChange={saveChangeTeamHandler}>
-                    <option value='1'>Team 404</option>
-                    <option value='2'>Kettle</option>
-                    <option value='3'>Rogue</option>
+                <select value={ctx.filterTeam} onChange={saveChangeTeamHandler}>
+                    {ctx.filterData.map((item) => <option value={item.name} key={item.name}>{item.name}</option>)}
                 </select>
+
             </div>
             <div className={`${styles['filter-div']} text-align-center`}>
                     <button onClick={saveDecreaseMonthHandler}>&lt;</button>
-                    <h2 className={`${styles["filter-month-label"]} header`}>{months[props.filterMonth]}</h2>
+                    <h2 className={`${styles["filter-month-label"]} header`}>{months[ctx.filterMonth]}</h2>
                     <button onClick={saveIncreaseMonthHandler}>&gt;</button>
             </div>
             <div className={`${styles['filter-div']} text-align-right`}>
-                <select value={props.filterYear} onChange={saveChangeYearHandler}>
+                <select value={ctx.filterYear} onChange={saveChangeYearHandler}>
                     <option value='2020'>2020</option>
                     <option value='2021'>2021</option>
                     <option value='2022'>2022</option>

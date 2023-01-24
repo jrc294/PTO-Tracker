@@ -1,8 +1,12 @@
 import styles from './Day.module.css';
+import {useContext} from "react";
+import AppContext from "../../store/context";
 
 const Day = (props) => {
 
     const dayAbbrev = ['Su','Mo','Tu','We','Th','Fr','Sa'];
+
+    const ctx = useContext(AppContext);
 
     let isWeekend = false;
 
@@ -12,7 +16,7 @@ const Day = (props) => {
 
     const clickHandler = () => {
         if (!isWeekend) {
-            props.onSetSelected(props.day, !props.isSelected);
+            ctx.onSetSelected(props.id, props.day, !props.isSelected);
         }
     }
 

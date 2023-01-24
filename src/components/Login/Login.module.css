@@ -78,10 +78,10 @@ label {
   color: #212121;
 }
 
-button {
-  color: #FFFFFF;
-  background-color: #9E9E9E;
-}
+/*button {*/
+/*  color: #FFFFFF;*/
+/*  background-color: #9E9E9E;*/
+/*}*/
 
 .textRight {
   text-align: right;

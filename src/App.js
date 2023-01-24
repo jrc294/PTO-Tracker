@@ -19,14 +19,14 @@ const App = () => {
         setLoginFailed("0");
         setTimeout(() => {
             setWaitingForLogin("0");
-            if (userName === 'Jonathan' && password === 'Hello1') {
+            if (userName === 'jonathan@coxautoinc.com' && password === 'Hello1') {
                 setLoggedIn('1');
                 localStorage.setItem("loggedIn","1");
             } else {
                 setLoginFailed("1");
             }
 
-        },2000);
+        },6000);
     }
 
     const errorModalHandler = () => {

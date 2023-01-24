@@ -1,6 +1,10 @@
 import NewUserForm from "./NewUserForm";
+import {useContext} from "react";
+import AppContext, {AppContextProvider} from "../../store/context";
 
 const NewUser = (props) => {
+
+    const ctx = useContext(AppContext);
 
     const saveAddUserHandler = (userData) => {
         console.log(userData);
@@ -8,7 +12,8 @@ const NewUser = (props) => {
             ...userData,
             id: parseInt(Math.random() * 1000)
         }
-        props.onAddUser(newUserData);
+        ctx.onAddUser(userData);
+        props.onAddUser();
     };
 
     const cancelButtonHandler = () => {

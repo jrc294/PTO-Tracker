@@ -2,37 +2,24 @@ import Card from "../../UI/Card";
 import Filter from "./Filter";
 import PersonList from "./PersonList";
 import styles from "./Container.module.css";
+import {useContext} from "react";
+import AppContext, {AppContextProvider} from "../../store/context";
 
-const Container = (props) => {
+const Container = () => {
 
-    console.log(props.filterTeam);
-    console.log(props.data);
-    const saveChangeYearHandler = (year) => {
-        props.onChangeYear(year);
-    }
+    const ctx = useContext(AppContext);
 
-    const saveChangeTeamHandler = (team) => {
-        props.onSaveChangeTeam(team);
-    }
+    console.log(ctx);
 
-    const setSelected = (userKey, day, isSelected) => {
-        props.onSetSelected(userKey, day, isSelected);
-    }
-
-    const filteredUsers = props.data.filter((item) => item.team === props.filterTeam);
+    const filteredUsers = ctx.data.filter((item) => item.team === ctx.filterTeam);
 
     return (
         <div>
             <Card className={styles.container}>
                 <div className="align-right">
-                    <Filter onChangeYear={saveChangeYearHandler}
-                            onChangeTeam={saveChangeTeamHandler}
-                            filterYear={props.filterYear}
-                            filterMonth={props.filterMonth}
-                            filterTeam={props.filterTeam}
-                            onChangeMonth={props.onChangeMonth}/>
+                    <Filter/>
                 </div>
-                <PersonList users={filteredUsers} filterYear={props.filterYear} filterMonth={props.filterMonth} onSetSelected={setSelected}/>
+                <PersonList users={filteredUsers}/>
             </Card>
         </div>
     );
